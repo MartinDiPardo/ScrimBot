@@ -23,9 +23,9 @@ module.exports = exports = {
         GLOBALS.activeUserRegistration.set(message.author.id, {
           step: 0,
           botMessage: registrationMessage,
-          botReaction: botReaction,
+          botReaction,
           userID: message.author.id,
-          registrationMessage: registrationMessage,
+          registrationMessage,
           registrationInformation: {
             discordID: message.author.id,
             notifications: false,

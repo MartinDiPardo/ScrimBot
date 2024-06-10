@@ -57,14 +57,18 @@ module.exports = exports = {
     99: 'ANY MAX'
   },
 
-  MAPS: ['split', 'bind', 'haven', 'ascent', 'icebox', 'breeze'],
+  MAPS: ['split', 'bind', 'haven', 'ascent', 'icebox', 'breeze', 'sunset', 'lotus', 'pearl', 'fracture'],
   MAPS_THUMBNAILS: {
     split: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt2caea7a88362d6aa/5ecd64b0817e574fa1dcc162/split-minimap-2.png',
     bind: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltad4274632c983531/5ecd64d04d187c101f3f2486/bind-minimap-2.png',
     haven: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltedb5d57941e4f3f5/5ecd64c14d187c101f3f2484/haven-minimap-2.png',
     ascent: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt47bef6aa9e43d8ec/5ecd64df96a8996de38bbf8f/ascent-minimap-2.jpg',
     icebox: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt727aeefa1875f8ce/5fc9954afd99385ff600b0f6/Icebox_1a.jpg',
-    breeze: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt1aa82531c6b3a04b/607fa05b33cf413db790d632/breeze_1a.jpg'
+    breeze: 'https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt1aa82531c6b3a04b/607fa05b33cf413db790d632/breeze_1a.jpg',
+    sunset: '',
+    lotus: '',
+    pearl: '',
+    fracture: ''
   },
 
   GAME_MODES: ['standard', 'spike rush', 'deathmatch'],

@@ -28,23 +28,41 @@
 // MARK: - Imports and global variables
 
 const CONSTANTS = require('./constants')
+const packageJSON = require('../package.json')
 const fs = require('fs')
-const path = require('path')
-const Discord = require('discord.js')
-  const client = new Discord.Client({
-    presence: {
-      activity: { name: 'for matches | v!help', type: 'WATCHING' }
-    },
-    ws: {
-      intents: Discord.Intents.NON_PRIVILEGED | Discord.Intents.resolve('MESSAGE_CONTENT')
-    }
-  })
+const path = require('node:path')
+const {
+  Client,
+  Collection, // eslint-disable-line no-unused-vars
+  GatewayIntentBits,
+  ActivityType, // eslint-disable-line no-unused-vars
+  Discord
+} = require('discord.js')
+const { MODE } = require('./constants.js')
+const { mongo } = require('./functions.js')
 require('dotenv').config()
+
+  const client = new Client({
+    presence: {
+      activities: [
+        {
+          name: 'for matches | v!help',
+          type: 'WATCHING'
+        }
+        ]
+    },
+    intents: [
+      GatewayIntentBits.Guilds,
+      GatewayIntentBits.GuildMembers,
+      GatewayIntentBits.GuildModeration,
+      GatewayIntentBits.GuildMessages,
+      GatewayIntentBits.GuildPresences,
+      GatewayIntentBits.DirectMessages,
+      GatewayIntentBits.MessageContent
+    ]
+  })
 verifyConfigurationIntegrity()
-const Mongo = require('mongodb')
-const mongo = new Mongo.MongoClient(process.env.MONGO_URI, {
-  useUnifiedTopology: true
-})
+
 // ScrimBot specific properties
 /**
  * @type {Map<string, object>}
@@ -119,7 +137,7 @@ class MatchEmbed extends ScrimBotEmbed {
 const GLOBALS = {
   client,
   Embed: ScrimBotEmbed,
-  MatchEmbed: MatchEmbed,
+  MatchEmbed,
   activeUserRegistration: new Discord.Collection(),
   activeMatchCreation: new Discord.Collection(),
   /**
@@ -244,7 +262,19 @@ client.on('message', async message => {
 // /////////////////////////////////////////////////////////////////////////// //
 // MARK: - Login bot
 
-client.login(process.env.TOKEN)
+let Token
+
+// Dev Token
+if (MODE.DevMode) {
+  Token = process.env.DEV_TOKEN
+
+// Main Token
+} else {
+  Token = process.env.TOKEN // eslint-disable-line no-unused-vars
+}
+async function StartBot () { // eslint-disable-line no-unused-vars
+  console.log(`Scrimbot online on version v${packageJSON.version}`)
+}
 
 // /////////////////////////////////////////////////////////////////////////// //
 // MARK: - Error handling
